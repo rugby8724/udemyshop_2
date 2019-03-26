@@ -4,11 +4,11 @@ from django.db import models
 class Category(models.Model):
     name = models.CharField(max_length=247, unique=True)
     slug = models.SlugField(max_length=247, unique=True)
-    description = model.TextField(blank=True)
+    description = models.TextField(blank=True)
     image = models.ImageField(upload_to='category', blank=True)
 
     class Meta:
-        order = ('name')
+        ordering = ['name']
         verbose_name = 'category'
         verbose_name_plural = 'categories'
 
@@ -18,7 +18,7 @@ class Category(models.Model):
 class Product(models.Model):
         name = models.CharField(max_length=247, unique=True)
         slug = models.SlugField(max_length=247, unique=True)
-        description = model.TextField(blank=True)
+        description = models.TextField(blank=True)
         category = models.ForeignKey(Category, on_delete=models.CASCADE)
         price = models.DecimalField(max_digits=10, decimal_places=2)
         image = models.ImageField(upload_to='product', blank=True)
@@ -28,7 +28,7 @@ class Product(models.Model):
         updated = models.DateTimeField(auto_now=True)
 
         class Meta:
-            ordering = ('name')
+            ordering = ['name']
             verbose_name = 'product'
             verbose_name_plural = 'products'
 
