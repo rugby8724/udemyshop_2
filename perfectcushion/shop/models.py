@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.urls import reverse
 # Create your models here.
 class Category(models.Model):
     name = models.CharField(max_length=247, unique=True)
@@ -15,11 +15,14 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
+    def get_absolute_url(self):
+        return reverse('shop:productsbycategory', kwargs={'slug':self.slug})
+
 class Product(models.Model):
         name = models.CharField(max_length=247, unique=True)
         slug = models.SlugField(max_length=247, unique=True)
         description = models.TextField(blank=True)
-        category = models.ForeignKey(Category, on_delete=models.CASCADE)
+        category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True, blank=True)
         price = models.DecimalField(max_digits=10, decimal_places=2)
         image = models.ImageField(upload_to='product', blank=True)
         stock = models.IntegerField()
