@@ -18,7 +18,7 @@
     <div class="">
         {% for product in object_list %}
             <!-- <a href="#"><img src="#" alt="{{product.name}}"></a> -->
-            <h4>{{product.name}}</h4>
+            <a href="{{product.get_absolute_url}}"><h4>{{product.name}}</h4></a>
             <p>{{product.price}}</p>
         {% endfor %}
     </div>

@@ -1,5 +1,6 @@
 from django.db import models
 from django.urls import reverse
+from django.utils.text import slugify
 # Create your models here.
 class Category(models.Model):
     name = models.CharField(max_length=247, unique=True)
@@ -39,12 +40,12 @@ class Product(models.Model):
             verbose_name = 'product'
             verbose_name_plural = 'products'
 
-    def get_absolute_url(self):
-        return reverse('shop:singleproduct', kwargs={'slug':self.slug})
-
-    def save(self, *args, **kwargs):
-        self.slug = slugify(self.name)
-        super(Category, self).save(*args, **kwargs)
-
         def __str__(self):
             return self.name
+
+        def save(self, *args, **kwargs):
+            self.slug = slugify(self.name)
+            super(Product, self).save(*args, **kwargs)
+
+        def get_absolute_url(self, *args, **kwargs):
+            return reverse('shop:singleproduct', kwargs={'slug':self.slug})

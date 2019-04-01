@@ -12,7 +12,7 @@
     <a href="{{ category.get_absolute_url }}">{{category.name}}</a>
     <br>
     {% for product in category.products.all %}
-        <h3>{{ product.name }}</h3>
+        <a href="{{ product.get_absolute_url }}"><h3>{{ product.name }}</h3></a>
         <h4>{{ product.price }}</h4>
     {% endfor %}
 
