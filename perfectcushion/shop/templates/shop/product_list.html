@@ -1,34 +1,12 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 {% block metadescription %}
-    {% if category %}
-        {{ category.description|truncatewords:155 }}
-    {% else %}
         Welcome to the Cushion Store
-    {% endif %}
 {% endblock %}
 {% block title %}
-{% if category %}
-    {{ category.name}} - Perfect Cushion Store
-{% else %}
     See Our Cushion Collection - Perfect Cushion Store
-{% endif %}
 {% endblock %}
 {% block content %}
-    <!-- Breadcrumb navigation -->
-    {% if category %}
-        <div class="">
-            <p><a href="{% url 'shop:allprodcat' %}">Our Product Collection</a> |{{category.name}}</p>
-        </div>
-    {% endif %}
-    {% if category %}
-        <img src="#" alt="{{category.name}}">
-        <br>
-        <div class="">
-            <h1>{{ category.name }}</h1>
-            <p>{{category.description}}</p>
-        </div>
-    {% else %}
      <img src="#" alt="Our Product Collection">
      <br>
      <div class="">
@@ -37,9 +15,8 @@
             to the levels of comfort and sense of style
          </p>
      </div>
-    {% endif %}
     <div class="">
-        {% for product in products %}
+        {% for product in object_list %}
             <!-- <a href="#"><img src="#" alt="{{product.name}}"></a> -->
             <h4>{{product.name}}</h4>
             <p>{{product.price}}</p>

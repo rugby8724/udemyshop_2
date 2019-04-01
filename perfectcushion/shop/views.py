@@ -5,7 +5,10 @@ from .models import Product, Category
 
 class ListProducts(generic.ListView):
     model = Product
-    template_name = 'shop/category.html'
+
 
 class SingleCategory(generic.DetailView):
     model = Category
+
+class SingleProduct(generic.DetailView):
+    model = Product
