@@ -39,10 +39,12 @@ class Product(models.Model):
             verbose_name = 'product'
             verbose_name_plural = 'products'
 
+    def get_absolute_url(self):
+        return reverse('shop:singleproduct', kwargs={'slug':self.slug})
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.name)
         super(Category, self).save(*args, **kwargs)
-        
+
         def __str__(self):
             return self.name

@@ -10,7 +10,7 @@
     <p><a href="{% url 'shop:allprodcat' %}">Home</a></p>
     <br>
     <div class="">
-        <img src="#" alt="{{product.name}}">
+        <a href="{% url 'product.get_absolute_url' %}"><img src="#" alt="{{product.name}}"></a>
     </div>
     <br>
     <div class="">
