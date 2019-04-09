@@ -6,7 +6,7 @@ from django.core.exceptions import ObjectDoesNotExist
 # Create your views here.
 
 def _cart_id(request):
-    cart = request.sessions.session_key
+    cart = request.session.session_key
     if not cart:
         cart = request.session.create()
     return cart
@@ -22,7 +22,8 @@ def add_cart(request, product_id):
         cart.save()
     try:
         cart_item = CartItem.objects.get(product=product, cart=cart)
-        cart_item.quantity == 1
+        if cart_item.quantity < cart_item.product.stock:
+            cart_item.quantity += 1
         cart_item.save()
     except CartItem.DoesNotExist:
         cart_item = CartItem.objects.create(
@@ -39,8 +40,8 @@ def cart_detail(request, total=0, counter=0, cart_items = None):
         cart = Cart.objects.get(cart_id=_cart_id(request))
         cart_items = CartItem.objects.filter(cart=cart, active=True)
         for cart_item in cart_items:
-            total += (cart_items.product.price * cart_item.quantity)
+            total += (cart_item.product.price * cart_item.quantity)
             counter += cart_item.quantity
-    except ObjectDoesNotExist
+    except ObjectDoesNotExist:
         pass
-    return render(request, 'cart.html', dict(cart_items = cart_items, total = total, counter = counter))
+    return render(request, 'cart/cart.html', dict(cart_items = cart_items, total = total, counter = counter))

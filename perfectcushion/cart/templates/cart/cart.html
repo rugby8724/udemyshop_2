@@ -45,7 +45,7 @@
                                 <td>
                                     <a href="{{cart_item.product.get_absolute_url}}">
                                         Image
-                                        <img class="float-left rounded custom_image"  src="{{#}}" alt="Product Image">
+
                                     </a>
                                 </td>
                                 <td class="text-left" >
@@ -62,8 +62,7 @@
                                 </td>
                                 {% if cart_item.quantity < cart_item.product.stock %}
                                     <td>
-                                        <a href="{% url 'cart:add_cart' cart_item.product.id %}"
-                                            class="custom_a">
+                                        <a href="{% url 'cart:add_cart' cart_item.product.id %}" class="custom_a">
                                             <i class="fas fa-plus-circle custom_icon"></i>
                                             &nbsp;
                                             </a>
@@ -92,7 +91,12 @@
                         <tr>
                             <td>
                                 Please review your shopping cart items before
-                                proceeding with the other payment.
+                                proceeding with the order payment.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="text-left">
+                                Your total is: <strong>{{ total }}</strong>
                             </td>
                         </tr>
                     </tbody>
