@@ -60,19 +60,20 @@
                                 <td>
                                     ${{cart_item.sub_total}}
                                 </td>
-                                {% if cart_item.quantity < cart_item.product.stock %}
                                     <td>
+                                    {% if cart_item.quantity < cart_item.product.stock %}
                                         <a href="{% url 'cart:add_cart' cart_item.product.id %}" class="custom_a">
                                             <i class="fas fa-plus-circle custom_icon"></i>
                                             &nbsp;
                                             </a>
-                                            <a href="#" class="custom_a">
+                                    {% endif %}
+                                            <a href="{% url 'cart:cart_remove' cart_item.product.id %}" class="custom_a">
                                                 <i class="fas fa-minus-square custom_icon"></i>
                                                 &nbsp;
                                             </a>
-                                            <a href="#" class="custom_a"><i class="fas fa-trash-alt custom_a"></i></a>
+                                            <a href="{% url 'cart:cart_delete' cart_item.product.id %}" class="custom_a"><i class="fas fa-trash-alt custom_a"></i></a>
                                     </td>
-                                    {% endif %}
+
                             </tr>
                         {% endfor %}
                     </tbody>
