@@ -106,7 +106,7 @@ Cart - Perfect Cushion Store
             <form action="" method="POST">
                 {% csrf_token %}
                 <script src="https://checkout.stripe.com/checkout.js" class="stripe-button" data-key="{{ data_key }}" data-amount="{{ stripe_total }}" data-name="Udemy Shop2" data-description="{{ description }}"
-                    data-image="https://stripe.com/img/documentation/checkout/marketplace.png" data-locale="auto"  data-zip-code="true" data-billing-address='true' data-currency='usd'>
+                    data-image="https://stripe.com/img/documentation/checkout/marketplace.png" data-locale="auto"  data-zip-code="true" data-billing-address='true' data-currency='usd' data-shipping-address='true'>
                 </script>
             </form>
             <a href="{% url 'shop:allprodcat' %}" class="btn btn-secondary btn-block my_custom_button">

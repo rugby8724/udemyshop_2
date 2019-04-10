@@ -65,7 +65,7 @@ def cart_detail(request, total=0, counter=0, cart_items=None):
             shippingName = request.POST['stripeShippingName']
             shippingAddress1 = request.POST['stripeShippingAddressLine1']
             shippingCity = request.POST['stripeShippingAddressCity']
-            shippingPostcode = request.POST['stripeShippingAddressZip']
+            shippingPostCode = request.POST['stripeShippingAddressZip']
             shippingCountry = request.POST['stripeShippingAddressCountryCode']
             customer = stripe.Customer.create(
                 email = email,
@@ -92,8 +92,8 @@ def cart_detail(request, total=0, counter=0, cart_items=None):
                         shippingName = shippingName,
                         shippingAddress1 = shippingAddress1,
                         shippingCity = shippingCity,
-                        shippingPostcode = shippingPostcode,
-                        shippingCountry = shippingCountry
+                        shippingPostCode = shippingPostCode,
+                        shippingCountry = shippingCountry,
 
                         )
                 order_details.save()

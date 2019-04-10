@@ -12,7 +12,7 @@ class Order(models.Model):
     billingPostcode = models.CharField(max_length=250, blank=True)
     billingCountry = models.CharField(max_length=250, blank=True)
     shippingName = models.CharField(max_length=250, blank=True)
-    shipingAddress1 = models.CharField(max_length=250, blank=True)
+    shippingAddress1 = models.CharField(max_length=250, blank=True)
     shippingCity = models.CharField(max_length=250, blank=True)
     shippingPostCode = models.CharField(max_length=250, blank=True)
     shippingCountry = models.CharField(max_length=250, blank=True)
