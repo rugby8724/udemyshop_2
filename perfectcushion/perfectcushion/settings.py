@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'bootstrap4',
+    'stripe',
     'shop',
     'search',
     'cart',
@@ -129,3 +130,6 @@ STATICFILES_DIR = [os.path.join(BASE_DIR, 'static')]
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR,'static','media')
+
+STRIPE_PUBLISHABLE_KEY = 'pk_test_2f7WET3s4fA8Vwh8mRGUOhpn007ZjX8kp0'
+STRIPE_SECRET_KEY = 'sk_test_yMIbmma7dwEK3fiNzMayeEtO005RFt9FXC'
