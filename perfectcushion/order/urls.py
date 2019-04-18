@@ -4,5 +4,5 @@ from . import views
 app_name = 'order'
 
 urlpatterns = [
-    path('thanks/<int:order_id>/' views.SingleOrder.as_view(), name='thanks'),
+    path('thanks/<int:pk>/', views.SingleOrder.as_view(), name='thanks'),
 ]

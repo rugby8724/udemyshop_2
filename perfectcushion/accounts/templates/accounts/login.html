@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% block metadescription %}
+    Login to Perfect Cushion
+{% endblock %}
+{% block title %}
+    Login
+{% endblock %}
+{% block content %}
+<div class="container">
+    <h1 class="my_title text-center">Log In or Create New Account</h1>
+    <br>
+    <div class="col-12 col-sm-12 col-md-12 col-lg-6 text-center my_custom_div">
+        <br>
+        <h2 class="my_title">New Customers, Sign Up Here</h2>
+        <br>
+        <p>With an account you will be able to track your order history</p>
+        <br>
+        <a class="btn btn-primary btn-large" href="{% url 'accounts:signup' %}">Sign Up</a>
+    </div>
+    <div class="col-12 col-sm-12 col-md-12 col-lg-6 bg-light">
+        <br>
+        <h2 class="my_title">Already Registered, Sign In Here</h2>
+        <form method="POST">
+            {% csrf_token %}
+            {% bootstrap_form form %}
+            <input type="submit" class="btn btn-secondary" value="Login">
+        </form>
+    </div>
+
+
+</div>
+{% endblock %}

@@ -112,7 +112,7 @@ def cart_detail(request, total=0, counter=0, cart_items=None):
                     order_item.delete()
                     # Terminal will print this message once the order is saved
                     print('The order has been created')
-                return redirect('order:thanks', order_details.id)
+                return redirect('order:thanks', pk=order_details.id)
             except ObjectDoesNotExist:
                 pass
 

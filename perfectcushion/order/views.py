@@ -4,5 +4,5 @@ from .models import Order
 # Create your views here.
 
 class SingleOrder(generic.DetailView):
-    template_name = 'thanks.html'
     model = Order
+    template_name = 'admin/order/thanks.html'

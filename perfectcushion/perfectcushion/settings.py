@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'bootstrap4',
     'stripe',
+    'accounts',
     'shop',
     'search',
     'cart',
@@ -134,3 +135,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR,'static','media')
 
 STRIPE_PUBLISHABLE_KEY = 'pk_test_2f7WET3s4fA8Vwh8mRGUOhpn007ZjX8kp0'
 STRIPE_SECRET_KEY = 'sk_test_yMIbmma7dwEK3fiNzMayeEtO005RFt9FXC'
+
+LOGIN_REDIRECT_URL = '/shop'
+LOGOUT_REDIRECT_URL = '/shop'
