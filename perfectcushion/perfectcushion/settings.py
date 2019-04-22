@@ -138,3 +138,10 @@ STRIPE_SECRET_KEY = 'sk_test_yMIbmma7dwEK3fiNzMayeEtO005RFt9FXC'
 
 LOGIN_REDIRECT_URL = '/shop'
 LOGOUT_REDIRECT_URL = '/shop'
+
+
+EMAIL_HOST = 'smtp.mailgun.org'
+EMAIL_PORT = '587'
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'postmaster@sandbox8a6cb68cff0441aa8a49376c1c78ebd2.mailgun.org'
+EMAIL_HOST_PASSWORD = 'e093d8d8625be81caf28513c3ce70b4f-3fb021d1-036ea15b'
