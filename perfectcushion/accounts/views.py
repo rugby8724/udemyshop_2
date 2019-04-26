@@ -8,7 +8,7 @@ from . import forms
 # Create your views here.
 class Signup(CreateView):
     form_class = forms.CustomerCreateForm
-    success_url = reverse_lazy('shop')
+    success_url = reverse_lazy('/shop')
     template_name = 'accounts/signup.html'
 
     def form_valid(self, form):

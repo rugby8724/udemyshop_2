@@ -1,10 +1,13 @@
 from django.db import models
 
+from django.contrib.auth import get_user_model
+User = get_user_model()
 # Create your models here.
 class Order(models.Model):
     token = models.CharField(max_length=250, blank=True)
     total = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='USD Order Total')
     emailAddress = models.EmailField(max_length=250, blank=True, verbose_name='Email Address')
+    user = models.ForeignKey(User, blank=True, null=True, related_name='order', on_delete=models.CASCADE)
     created = models.DateTimeField(auto_now_add=True)
     billingName = models.CharField(max_length=250, blank=True)
     billingAddress1 = models.CharField(max_length=250, blank=True)

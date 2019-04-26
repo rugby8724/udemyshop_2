@@ -3,7 +3,14 @@
         <ul>
             {% if request.user.is_authenticated %}
             <li>
-                Welcome, {{ user.username }} <i class="fas fa-user"></i>
+                Welcome,<a href="#" class="dropdown-toggle" data-toggle='dropdown'
+                        aria-haspopup='true' aria-expanded='false'>
+                    {{ user.username }} <i class="fas fa-user"></i></a>
+                <div class="dropdown-menu dropdown-menu-right">
+                    <a href="{% url 'order:order_history' %}" class="dropdown-item">
+                        Order History
+                    </a>
+                </div>
             </li>
             <li>
                 <a href="{% url 'accounts:logout' %}">Log Out <i class="fas fa-sign-out-alt"></i></a>
