@@ -79,12 +79,16 @@ def cart_detail(request, total=0, counter=0, cart_items=None):
                 description = description,
                 customer=customer.id
             )
+            if request.user.is_anonymous:
+                user = None
+            else:
+                user = request.user
 
             # Creating The Order
             try:
                 order_details = Order.objects.create(
                         token = token,
-                        user = request.user,
+                        user = user,
                         total = total,
                         emailAddress = email,
                         billingName = billingName,
