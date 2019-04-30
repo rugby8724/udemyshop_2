@@ -25,5 +25,14 @@ class OrderList(LoginRequiredMixin, generic.ListView):
         print(self.request.user)
         return Order.objects.filter(user=self.request.user)
 
-    # def get_queryset(self):
-    #     return Order.objects.filter(emailAddress = str(self.request.user.email))
+class OrderDetail(LoginRequiredMixin, generic.DetailView):
+    model = OrderItem
+    template_name = 'admin/order/order_detail.html'
+
+    def get_queryset(self):
+        return Order.objects.filter(user=self.request.user)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['order_items'] = OrderItem.objects.all()
+        return context
