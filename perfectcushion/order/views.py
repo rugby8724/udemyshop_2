@@ -5,6 +5,8 @@ from django.http import Http404
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 
+from braces.views import SelectRelatedMixin
+
 from django.contrib.auth import get_user_model
 User = get_user_model()
 
@@ -19,14 +21,9 @@ class OrderList(LoginRequiredMixin, generic.ListView):
     template_name = 'admin/order/order_list.html'
 
 
-class OrderDetail(LoginRequiredMixin, generic.DetailView):
-    model = OrderItem
+    def get_queryset(self):
+        print(self.request.user)
+        return Order.objects.filter(user=self.request.user)
 
-
-
-# @login_required()
-# def orderHistory(request):
-# 	if request.user.is_authenticated:
-# 		email = User.objects.get(email__iexact=self.)
-# 		order_details = Order.objects.filter(emailAddress=email)
-# 	return render(request, 'admin/order/order_list.html', {'order_details':order_details})
+    # def get_queryset(self):
+    #     return Order.objects.filter(emailAddress = str(self.request.user.email))
